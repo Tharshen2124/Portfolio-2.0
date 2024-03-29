@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout title="About | Tharshen" description="About Tharshen Lorem Ipsum">
+	<div class="stack gap-20">
+		<main class="wrapper about">
+			<Hero
+				title="About"
+				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
+			>
+				<!-- <img
+					width="1553"
+					height="873"
+					src="/assets/at-work.jpg"
+					alt="Tharshen at work with a colleague"
+				/> -->
+			</Hero>
+
+			<section>
+				<h2 class="section-title">Background</h2>
+				<div class="content">
+					<p>
+						Im in my final year of Diploma in Information Technology and will be doing my degree after that 
+						and specialising in software engineering. I first got started in programming when i was looking at websites
+						one day and just out of curiosity, i thought to myself "Hhhhmm...how this work?". Ever since then, I've been
+						exploring the world of computer science one step at a time and realising how cool it is. Was it hard? Yeah it was.
+						However, after every problem i solved and after every new technology i discovered, i kept wanting to learn more 
+						and realise this is pretty fun haha. I dont know where my path is headed for my future but what i do know
+						is im probably be gonna still sitting at computer looking at a bunch of code and thinking "....what's this do?".
+					</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Education</h2>
+				<div class="content">
+					<p>Diploma in Information Technology</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Programming Languages</h2>
+				<div class="content">
+						Javascript, C, C++, Java, Python, PHP, Ruby
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Technologies</h2>
+				<div class="content">
+					React, Next.js, Svelte, Node (Basics), Express (Basics), Laravel, Ruby on Rails, Github Actions (CICD), Split IO (Feature Flag), Webpack, Docker (Basics)
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-200);
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	.content :global(a) {
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+</style>
