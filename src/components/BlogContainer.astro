@@ -1,0 +1,58 @@
+---
+
+interface Props {
+    title: string
+    desc: string
+    date: string
+    link: string
+}
+
+const { title, desc, date, link } = Astro.props;
+---
+<a href={link} style="text-decoration: none">
+    <div id="article-container">
+        <h4>{title}</h4>
+        <p class="article-container-desc">{desc}</p>		
+        <p class="date">{date}</p>
+    </div>
+</a>
+
+<style>
+	#article-container {
+		border: 3px solid rgba(84, 20, 105, 0.511);
+		padding: 20px 30px;
+		border-radius: 10px;
+		box-shadow: rgba(28, 9, 63, 0.644) 0px 0px 30px;
+		width: 100%;
+		margin: 25px 0;
+		transition: .3s ease-in-out;
+		color:white;
+		text-decoration: none;
+	}
+
+	#article-container:hover {
+		transition: .3s ease-in-out;
+		border: 3px solid rgba(116, 22, 150, 0.656);
+		box-shadow: rgba(55, 16, 126, 0.644) 0px 0px 30px;
+		translate: 0px -8px;
+		text-decoration: none;
+	}
+
+	.article-container-desc {
+		margin-top: 10px;
+		opacity: 0.75;
+		text-decoration: none;
+	}
+
+	.article-container:hover .child {
+  		pointer-events: none; /* Disable pointer events on children */
+		  text-decoration: none;
+	}
+
+	.date {
+		opacity: 0.5;
+		margin-top: 10px;
+		font-size: 14px;
+		text-align: right;
+	}
+</style>

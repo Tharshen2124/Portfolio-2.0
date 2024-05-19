@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
+import Hero from '../components/Hero.astro';
+import Grid from '../components/Grid.astro';
+import BlogContainer from '../components/BlogContainer.astro';
+
+const projects = (await getCollection('work')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout
+	title="My Work | Tharshen"
+	description="Learn about Tharshen's most recent projects"
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack gap-8">
+			<Hero
+				title="Blog"
+				tagline="This is where i share my experiments, discoveries, how-tos and just my own opinion on things."
+				align="start"
+			/>
+			<section>
+				<BlogContainer
+					title="My experience at Moneylion for my internship"
+					desc='So i did my internship at Moneylion and i gotta say...I learned a lot'
+					date='30/5/2024'
+					link="/1"
+				/>
+			</section>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
+<style>
+	#article-container {
+		border: 3px solid rgba(84, 20, 105, 0.511);
+		padding: 20px 30px;
+		border-radius: 10px;
+		box-shadow: rgba(28, 9, 63, 0.644) 0px 0px 30px;
+		width: 100%;
+		margin: 25px 0;
+		transition: .3s ease-in-out;
+		color:white;
+		text-decoration: none;
+	}
+
+	#article-container:hover {
+		transition: .3s ease-in-out;
+		border: 3px solid rgba(116, 22, 150, 0.656);
+		box-shadow: rgba(55, 16, 126, 0.644) 0px 0px 30px;
+		translate: 0px -8px;
+		text-decoration: none;
+	}
+
+	.article-container-desc {
+		margin-top: 10px;
+		opacity: 0.75;
+		text-decoration: none;
+	}
+
+	.article-container:hover .child {
+  		pointer-events: none; /* Disable pointer events on children */
+		  text-decoration: none;
+	}
+
+	.date {
+		opacity: 0.5;
+		margin-top: 10px;
+		font-size: 14px;
+		text-align: right;
+	}
+</style>
